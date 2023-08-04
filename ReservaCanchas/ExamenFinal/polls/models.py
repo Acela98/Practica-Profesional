@@ -3,7 +3,6 @@ from django.db import models
 class Usuario(models.Model):
     nombre = models.CharField(blank=True, null=True, max_length= 50)
     apellido = models.CharField(blank=True, null=True, max_length= 50)
-   
     correo = models.CharField(max_length=50)
     telefono = models.CharField(max_length=20)
     fecha_registro = models.DateField()
@@ -12,8 +11,9 @@ class Usuario(models.Model):
     tipo = models.CharField(max_length=20)
     direccion = models.CharField(max_length=50)
     contrasena = models.CharField(max_length=20)
+
     def __str__(self):
-        return f"{self.nombre} - {self.apellido} - {self.correo}"
+        return f"{self.nombre} - {self.apellido} - {self.correo}- {self.telefono}- {self.ci}- {self.fecha_registro}- {self.fecha_nac}- {self.tipo}- {self.direccion}- {self.conntrasena}"
     
 class Sede(models.Model):
     nombre = models.CharField(blank=True, null=True, max_length= 50)
@@ -21,7 +21,20 @@ class Sede(models.Model):
     telefono = models.CharField(max_length=20)
     estado = models.CharField(max_length=20)
 
-    
+    def __str__(self):
+        return f"{self.nombre} - {self.direccio} - {self.telefono}- {self.estado}"
+
+class Cancha(models.Model):
+    nombre = models.CharField(blank=True, null=True, max_length= 50)
+    tipo = models.CharField(max_length=20)
+    descripcion = models.CharField(max_length=50)
+    id_sede = models.ForeignKey('Sede', on_delete=models.PROTECT, db_column='id_sede', blank=True, null=True)
+    estado = models.CharField(max_length=20)
+    def __str__(self):
+        return f"{self.nombre} - {self.tipo} - {self.descripcion}- {self.estado}"
+
+
+
 
 
 
