@@ -11,6 +11,6 @@ class Usuario(models.Model):
     estado = models.CharField(max_length=20)
     direccion = models.CharField(max_length=50)
     def __str__(self):
-        return f"{self.nombre} - {self.apellido} - {self.id_ciudad.nombre} - {self.correo}"
+        return f"{self.nombre} - {self.apellido} - {self.correo}"
     
 
