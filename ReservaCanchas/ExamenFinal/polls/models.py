@@ -34,6 +34,18 @@ class Cancha(models.Model):
         return f"{self.nombre} - {self.tipo} - {self.descripcion}- {self.estado}"
 
 
+class Reserva(models.Model):
+
+    id_usuario = models.ForeignKey('Usuario', on_delete=models.PROTECT, db_column='id_usuario', blank=True, null=True)
+    id_cancha = models.ForeignKey('Cancha', on_delete=models.PROTECT, db_column='id_cancha', blank=True, null=True)
+    fecha = models.DateField()
+    hora= models.TimeField()
+    estado = models.CharField(max_length=20)
+    observacion = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.fecha} - {self.id_usuario} - {self.id_cancha}- {self.estado}- {self.hora}- {self.observacion}"
+
+
 
 
 
